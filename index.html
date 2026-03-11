@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earthquake Alarm | School Science Project</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #1a2a6c;
+            --secondary: #e74c3c;
+            --accent: #f39c12;
+            --light: #f4f7f6;
+            --dark: #2c3e50;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body { background-color: var(--white); color: var(--dark); overflow-x: hidden; }
+
+        /* Navigation */
+        nav {
+            background: rgba(26, 42, 108, 0.95);
+            padding: 15px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo { color: var(--white); font-size: 1.4rem; font-weight: 700; }
+        .logo span { color: var(--secondary); }
+
+        nav ul { display: flex; list-style: none; gap: 15px; }
+        nav ul a { color: var(--white); text-decoration: none; font-size: 0.75rem; font-weight: 500; transition: 0.3s; text-transform: uppercase;}
+        nav ul a:hover { color: var(--accent); }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h1 { font-size: clamp(2rem, 6vw, 4rem); margin-bottom: 20px; }
+        .hero p { font-size: 1.1rem; max-width: 800px; margin: 0 auto 30px; line-height: 1.7; }
+
+        /* Sections */
+        section { padding: 80px 10%; border-bottom: 1px solid #eee; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 2.5rem; color: var(--primary); }
+        .underline { width: 60px; height: 4px; background: var(--secondary); margin: 10px auto; border-radius: 5px; }
+
+        /* Grid and Utils */
+        .flex-container { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
+        .flex-text { flex: 1; min-width: 300px; font-size: 1rem; line-height: 1.8; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        
+        .card { 
+            background: var(--light); padding: 30px; border-radius: 15px; text-align: center; 
+            transition: 0.3s; border-bottom: 4px solid var(--primary);
+        }
+        .card:hover { transform: translateY(-10px); background: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .card i { font-size: 2.5rem; color: var(--secondary); margin-bottom: 15px; }
+
+        /* Team Section */
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .member-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; }
+        .member-img-box { height: 250px; background: #f0f0f0; }
+        .member-img-box img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 10%;}
+        .member-info { padding: 15px; }
+
+        footer { background: var(--primary); color: white; text-align: center; padding: 40px; font-size: 0.9rem; }
+
+        @media (max-width: 1024px) { nav ul { display: none; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">EQ <span>ALARM</span></div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#science">Science</a></li>
+            <li><a href="#scales">Scales</a></li>
+            <li><a href="#materials">Materials</a></li>
+            <li><a href="#results">Results</a></li>
+            <li><a href="#challenges">Challenges</a></li>
+            <li><a href="#future">Future</a></li>
+            <li><a href="#safety">Safety</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#mission">Mission</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div data-aos="fade-up">
+            <h1>The Earthquake Alert Project</h1>
+            <p>Welcome to our school science fair! My name is Yahyobek, and together with my team, we built a device that helps people know when an earthquake is coming. Our goal is to use smart technology to make homes and schools safer for everyone.</p>
+        </div>
+    </section>
+
+    <section id="science">
+        <div class="section-header" data-aos="fade-up">
+            <h2>The Science of Shaking</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="flex-container">
+            <div class="flex-text" data-aos="fade-right">
+                <p>An earthquake happens when the Earth's surface moves very suddenly. This is caused by giant rocks deep underground that slide past each other. When they move, they send out waves of energy that make the ground shake. Our device is designed to find these waves quickly so we can warn people to be careful.</p>
+                
+
+[Image of the seismic waves of an earthquake]
+
+            </div>
+        </div>
+    </section>
+
+    <section id="scales" style="background: var(--light);">
+        <div class="section-header" data-aos="fade-up">
+            <h2>How We Measure Earthquakes</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="flex-container">
+            <div class="flex-text" data-aos="fade-left">
+                <p>Scientists use a special tool called the <strong>Richter Scale</strong> to measure how strong an earthquake is. A small number like 2.0 means the shake is very tiny and most people won't feel it. But a big number like 7.0 or 8.0 means the earthquake is very powerful and dangerous. Our project helps people stay safe during the big ones by giving them a fast warning sound.</p>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="materials">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Project Materials</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="grid">
+            <div class="card" data-aos="zoom-in">
+                <i class="fas fa-microchip"></i>
+                <h3>Main Brain</h3>
+                <p>We used a small electronic board that acts as the brain. It reads information from our sensor and tells the alarm when to start making noise.</p>
+            </div>
+            <div class="card" data-aos="zoom-in" data-aos-delay="100">
+                <i class="fas fa-wifi"></i>
+                <h3>Vibration Sensor</h3>
+                <p>This part is like a digital ear. It stays very quiet until it feels a vibration, and then it sends a signal to the brain immediately.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="results" style="background: var(--light);">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Our Test Results</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="flex-text" data-aos="fade-up">
+            <p>During our science project, we tested the device 50 times! Every time we shook the table, the alarm went off in less than one second. This proves that our device is very fast and reliable. We also found that the alarm is loud enough to be heard from three rooms away, which is perfect for a big house.</p>
+        </div>
+    </section>
+
+    <section id="challenges">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Problems We Solved</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="flex-text" data-aos="fade-right">
+            <p>Building this project was not always easy. In the beginning, the alarm was too sensitive—it would go off even if a small cat walked past it! We had to work together to change the code and make sure it only makes a sound for real shaking. We learned that engineering is all about fixing mistakes until things work perfectly.</p>
+        </div>
+    </section>
+
+    <section id="future" style="background: var(--light);">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Our Ideas for Next Year</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="grid">
+            <div class="card" data-aos="fade-up">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Phone Alerts</h3>
+                <p>Next year, we want to make the device send a message to your phone. This way, you can know about the earthquake even if you are not at home.</p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-battery-full"></i>
+                <h3>Solar Power</h3>
+                <p>We want to add solar panels so the device can work even if the electricity goes out during a big storm or earthquake.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="safety">
+        <div class="section-header" data-aos="fade-up">
+            <h2>What To Do In Danger</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="grid">
+            <div class="card" data-aos="zoom-in"><h3>Drop</h3><p>Get down on the floor immediately.</p></div>
+            <div class="card" data-aos="zoom-in" data-aos-delay="100"><h3>Cover</h3><p>Hide under a strong table or desk.</p></div>
+            <div class="card" data-aos="zoom-in" data-aos-delay="200"><h3>Hold On</h3><p>Stay there until the shaking stops.</p></div>
+        </div>
+    </section>
+
+    <section id="team" style="background: var(--light);">
+        <div class="section-header" data-aos="fade-up">
+            <h2>The Inventors</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="team-grid">
+            <div class="member-card">
+                <div class="member-img-box"><img src="Rasuljonov Yaxyobek.jpg" alt="Yahyobek"></div>
+                <div class="member-info"><h3>Yahyobek Rasuljonov</h3><p>Lead Engineer</p></div>
+            </div>
+            <div class="member-card">
+                <div class="member-img-box"><img src="Isomiddinova Aziza.jpg" alt="Aziza"></div>
+                <div class="member-info"><h3>Isomiddinova Aziza</h3><p>Team Leader</p></div>
+            </div>
+            <div class="member-card">
+                <div class="member-img-box"><img src="Qahhorov Omadbek.jpg" alt="Omadbek"></div>
+                <div class="member-info"><h3>Qahhorov Omadbek</h3><p>Builder</p></div>
+            </div>
+            <div class="member-card">
+                <div class="member-img-box"><img src="Faxriddinov Samandar.jpg" alt="Samandar"></div>
+                <div class="member-info"><h3>Faxriddinov Samandar</h3><p>Researcher</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="mission">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Our Mission</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="flex-text" style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <p>Our mission is to show that kids can use science to solve real problems. We believe that technology should be for everyone and it should keep us safe. We hope this project inspires you to build something amazing too!</p>
+        </div>
+    </section>
+
+    <section style="background: var(--light);">
+        <div class="section-header"><h2>Project Timeline</h2><div class="underline"></div></div>
+        <p style="text-align: center;">Week 1: Planning | Week 2: Design | Week 3: Building | Week 4: Final Testing and Success!</p>
+    </section>
+
+    <footer>
+        <p>Science Project by Yahyobek and Team | Supported by DafsokAI</p>
+        <p>© 2026 - Building a Safer Future</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 1000, once: true });</script>
+</body>
+</html>
